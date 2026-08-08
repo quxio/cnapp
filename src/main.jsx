@@ -9,7 +9,7 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL);
 createRoot(document.getElementById("REACTROOT")).render(
   <StrictMode>
     <ConvexAuthProvider client={convex}>
-      <div>hello there!</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
     </ConvexAuthProvider>
   </StrictMode>,
 );

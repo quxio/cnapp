@@ -1,5 +1,22 @@
-body {
+* {
     margin: 0; padding: 0;
     box-sizing: border-box;
+
+    -webkit-user-select: none;
+    cursor: default;
     font: 16px/1.14 system-ui;
+    text-decoration: none;
+}
+body {
+    overflow-x: clip;
+}
+
+
+.NAVBAR {
+    position: fixed;
+    background-color: indianred;
+}
+.NAVBARSPACER {
+    width: 100vw;
+    height: 60px;
 }

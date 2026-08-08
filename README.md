@@ -5,7 +5,8 @@ my congressional app challenge web app
 ---
 
 current working title - "Idea4Project"
-A site where user-generated project tutorials get upvosts/downvotes
+
+- Users post content 
 
 ---
 

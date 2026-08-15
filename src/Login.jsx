@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { NavLink, useNavigate } from "react-router";
-import { ConvexError } from "convex/values";
 import { Authenticated, Unauthenticated } from "convex/react";
 
 
@@ -50,6 +49,9 @@ export default function Login() {
 
             <Authenticated>
               <div style={{backgroundColor: "cornflowerblue"}}>AUTHENTICATED</div>
+
+
+
             </Authenticated>
             <Unauthenticated>
               <div style={{backgroundColor: "lightgreen"}}>UNAUTHENTICATED</div>

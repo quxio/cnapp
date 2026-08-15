@@ -2,7 +2,7 @@ import { convexAuth } from "@convex-dev/auth/server";
 import { Password } from "@convex-dev/auth/providers/Password";
 
 import { DataModel } from "./_generated/dataModel";
-import { Internal } from "./_generated/api";
+import { internal } from "./_generated/api";
 import { ConvexError } from "convex/values";
 
 const customSignInProviderThing = Password<DataModel>({
@@ -28,25 +28,16 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   callbacks:
     {
       async createOrUpdateUser(ctx, a) {
+        const f = a.profile;
+        const ph : string = f.handle as string;
+
+        const bool = await ctx.runQuery(internal.internalfuncs.HandleCollisionExists, {ph});
+        if (bool) { throw new ConvexError("handle collision"); }
+
         if (a.existingUserId) {
           // push updated fields to the existing user entry
           return a.existingUserId;
         }
-
-        const f = a.profile;
-        const ph : string = f.handle as string;
-
-        const data = await ctx.db.query("users").collect();
-        console.log("data", data);
-
-        let num = 0;
-        for (const obj of data) {
-          if (obj.handle === ph) { ++num; }
-        }
-
-        console.log("num", num);
-
-        if (num > 0) { throw new ConvexError("handle collision"); }
 
         return ctx.db.insert("users", {
           email: f.email as string,

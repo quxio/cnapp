@@ -2,25 +2,15 @@ import { convexAuth } from "@convex-dev/auth/server";
 import { Password } from "@convex-dev/auth/providers/Password";
 
 import { DataModel } from "./_generated/dataModel";
-import { internal } from "./_generated/api";
-import { ConvexError } from "convex/values"
+import { Internal } from "./_generated/api";
+import { ConvexError } from "convex/values";
 
 const customSignInProviderThing = Password<DataModel>({
-   /* async */ profile (params, ctx) {
-    const f = params.flow as string;
+   profile (params) {
 
     const p_email = params.email as string;
     const p_name = params.name as string;
     const p_handle = params.handle as string;
-
-    if (f === "signUp") {
-    //   const col = await ctx.runQuery(internal.userfuncs.HandleCollisionExists, { p_handle: p_handle, });
-    //   if (col) {throw new ConvexError("Handle already exists");}
-    }
-
-    // return new Promise<{ email: string, name: string, handle: string, avatar: string, bio: string, }>(
-    //   (resolve) => resolve({email: p_email, name: p_name, handle: p_handle, avatar: "generated avatar", bio: ""})
-    // )
 
     return {
       email: p_email,
@@ -35,4 +25,36 @@ const customSignInProviderThing = Password<DataModel>({
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [customSignInProviderThing],
+  callbacks:
+    {
+      async createOrUpdateUser(ctx, a) {
+        if (a.existingUserId) {
+          // push updated fields to the existing user entry
+          return a.existingUserId;
+        }
+
+        const f = a.profile;
+        const ph : string = f.handle as string;
+
+        const data = await ctx.db.query("users").collect();
+        console.log("data", data);
+
+        let num = 0;
+        for (const obj of data) {
+          if (obj.handle === ph) { ++num; }
+        }
+
+        console.log("num", num);
+
+        if (num > 0) { throw new ConvexError("handle collision"); }
+
+        return ctx.db.insert("users", {
+          email: f.email as string,
+          name: f.name as string,
+          handle: f.handle as string,
+          avatar: f.avatar as string,
+          bio: f.bio as string,
+        })
+      }
+    }
 });

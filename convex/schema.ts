@@ -20,5 +20,5 @@ export default defineSchema({
   })
     .index("email", ["email"])
     .index("phone", ["phone"])
-    .index("handle", ["handle"])
+    .index("withHandle", ["handle"])
 });

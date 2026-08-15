@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { NavLink, useNavigate } from "react-router";
 import { ConvexError } from "convex/values";
+import { Authenticated, Unauthenticated } from "convex/react";
 
 
 export default function Login() {
@@ -20,16 +21,11 @@ export default function Login() {
             const fd = new FormData(e.currentTarget);
             fd.set("flow", up ? "signUp" : "signIn");
             try {
-              auth.signIn("password", fd);
+              auth.signIn("password", fd).catch((e)=>console.log(error.message, "GOT ERRPORIORE"));
             } catch (e) {
-              if (error instanceof ConvexError) {
-                alert(`Got some kinda error:\n${e.message}`);
-              } else {
-                alert("Something really unexpected happened that the site couldn't handle. Unfortunately. Sorry. Umm.. Try again... later???");
-              }
               return;
             }
-            navi("/");
+            console.log("moving on");
           }}>
 
             <label htmlFor="email">email</label>
@@ -51,6 +47,14 @@ export default function Login() {
             {/*<input name="flow" value={up ? "signUp" : "signIn"} type="hidden" />*/}
 
             <button type="submit">submit</button>
+
+            <Authenticated>
+              <div style={{backgroundColor: "cornflowerblue"}}>AUTHENTICATED</div>
+            </Authenticated>
+            <Unauthenticated>
+              <div style={{backgroundColor: "lightgreen"}}>UNAUTHENTICATED</div>
+            </Unauthenticated>
+            <button onClick={auth.signOut}>log out</button>
 
           </form>
           <NavLink to="/">Back</NavLink>

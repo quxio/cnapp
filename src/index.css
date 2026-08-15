@@ -6,17 +6,77 @@
     cursor: default;
     font: 16px/1.14 system-ui;
     text-decoration: none;
+
+    color: black;
 }
 body {
     overflow-x: clip;
 }
 
+/*----------*/
+
 
 .NAVBAR {
     position: fixed;
-    background-color: indianred;
+    background-color: #c9cfe17f; /* Emulate #e4e7f0 @ 50% opacity on #fff */
+    backdrop-filter: blur(9px);
+
+    display: flex; flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+}
+.LOGOFONT {
+    font-family: "Emilys Candy", serif;
+    font-size: 32px;
 }
 .NAVBARSPACER {
     width: 100vw;
     height: 60px;
+}
+.LOGINBTN {
+    /*font-weight: bold;*/
+    display: flex; flex-flow: row nowrap;
+    justify-content: center; align-items: center;
+    border-radius: 24px;
+    border: 2px solid black;
+    height: 40px;
+    width: 96px;
+    background-color: slategray;
+
+    cursor: pointer;
+}
+.LOGINBTN:hover {
+    text-decoration-line: underline;
+}
+
+.LOGINOUTERCONTAINER {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.LOGININNERCONTAINER {
+    border-radius: 30px;
+    border: 10px solid #202020;
+    width: 700px;
+    background-color: #171717;
+    max-width: 100vw;
+
+    height: 400px;
+    @media (max-height: 800px) or (max-device-width: 480px)  {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.LOGININNERCONTAINER label {
+    color: white;
 }

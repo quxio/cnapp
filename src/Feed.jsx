@@ -1,10 +1,20 @@
-import { NavLink } from "react-router";
-
+import { Authenticated, Unauthenticated } from "convex/react";
+import { Link } from "react-router";
 
 function Navbar() {
   return (
     <div className="NAVBAR NAVBARSPACER">
-      this is the navbar
+      <div className="LOGOFONT">idea4project</div>
+
+
+      <div style={{flexGrow: 1}}></div>
+      <Authenticated>
+        <div>ur profile</div>
+      </Authenticated>
+      <Unauthenticated>
+        <Link to="login" className="LOGINBTN">log in</Link>
+      </Unauthenticated>
+
     </div>
   )
 }
@@ -18,7 +28,29 @@ export default function Feed() {
       <Navbar/>
       <Navbarspacer/>
       <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
-      <NavLink to="login">Login</NavLink>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <div>This person has a really long bio.<br/>It spans multiple lines.<br/>Nobody will read this.</div>
+      <Link to="login">Login</Link>
     </>
   )
 }

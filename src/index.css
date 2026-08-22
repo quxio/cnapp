@@ -11,21 +11,115 @@
 }
 body {
     overflow-x: clip;
+    background-color: lightgoldenrodyellow;
 }
 
 /*----------*/
 
 
+.PROFILEPOP {
+    top: 0;
+    right: 0;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 17px;
+    background-color: #6179A9;
+    box-shadow: 0 0 28px #5779ACE5;
+    overflow: clip;
+}
+.PROFILE {
+    position: relative;
+    height: 34px;
+    width: 120px;
+    display: flex; flex-flow: row nowrap;
+    align-items: center;
+    gap: 3px;
+    padding: 0 3px;
+    border-radius: 17px;
+}
+.NNPROFILE {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 34px;
+    width: 120px;
+    border-radius: 17px;
+    background-color: #6179A9;
+
+    display: flex; flex-flow: row nowrap;
+    align-items: center;
+    gap: 3px;
+    padding: 0 3px;
+}
+.NNPROFILE * {
+    flex-shrink: 0;
+}
+.PROFILETEXT {
+    font-size: 16px;
+    text-wrap: nowrap;
+}
+.PROFILEIMG {
+    height: 26px;
+    border-radius: 13px;
+    image-rendering: crisp-edges;
+}
+.PROFILEIMGPL {
+    width: 26px;
+    height: 26px;
+    overflow: clip;
+}
+.PROFILEIMGAGAIN {
+    width: 100%;
+    border-radius: 13px;
+    image-rendering: crisp-edges;
+}
+.PROFILE:hover {
+    background-color: #6179A9;
+}
+.PROFILEGRID {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 166px;
+    background-color: red;
+    padding: 3px;
+    gap: 3px;
+}
+.PROFILEGRID > div {
+    border-radius: 14px;
+    background-color: pink;
+    display: flex; flex-wrap: nowrap; justify-content: center; align-items: center;
+}
+.PROFILEGRID > div:hover {
+    background-color: #dca4ae;
+}
+.LLLL {
+    height: 26px;
+    width: 265px;
+    background-color: #6179A9;
+    border-radius: 13px;
+    object-fit: contain;
+}
 .NAVBAR {
     position: fixed;
-    background-color: #c9cfe17f; /* Emulate #e4e7f0 @ 50% opacity on #fff */
-    backdrop-filter: blur(9px);
+    /*background-color: #c9cfe17f; !* Emulate #e4e7f0 @ 50% opacity on #fff *!*/
+    /*background-color: #fffa;*/
+    /*background-color: black;*/
+    /*backdrop-filter: blur(9px);*/
+    background: #C9CFE185;
+    background: linear-gradient(180deg,rgba(201, 207, 225, 0.9) 0%, rgba(87, 121, 172, 1) 100%);
+    backdrop-filter: blur(14px);
 
     display: flex; flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: center;
     padding: 0 20px;
     gap: 20px;
+    /*box-shadow: 0 0 1px gray;*/
+    box-shadow: 0 0 30px #5779ACE5;
 }
 .LOGOFONT {
     font-family: "Emilys Candy", serif;
@@ -40,7 +134,7 @@ body {
     display: flex; flex-flow: row nowrap;
     justify-content: center; align-items: center;
     border-radius: 24px;
-    border: 2px solid black;
+    border: 2px solid white;
     height: 40px;
     width: 96px;
     background-color: slategray;
@@ -49,6 +143,7 @@ body {
 }
 .LOGINBTN:hover {
     text-decoration-line: underline;
+    /*background-color: blue;*/
 }
 
 .LOGINOUTERCONTAINER {
@@ -80,3 +175,53 @@ body {
 .LOGININNERCONTAINER label {
     color: white;
 }
+
+/* ----- */
+
+.FEEDBOXOUTER {
+    display: flex; flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.FEEDBOX {
+    height: 100%;
+    width: 100%;
+    max-width: 1650px;
+    margin: 12px;
+    display: flex; flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 1px;
+}
+.FEEDCARD {
+    background-color: cornflowerblue;
+    width: 400px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    padding: 5px 12px 5px 5px;
+    gap: 12px;
+}
+.FCIMAGEBOX {
+    display: grid;
+    cursor: pointer;
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+    gap: 5px;
+}
+.FCIMAGE {
+    grid-column: 1 / -1;
+    grid-row: 1 / -2;
+    background-color: lightcyan
+}
+.FCTEMP {
+    background-color: gray;
+}
+.FCTEXTBOX {
+    overflow-x: clip;
+}
+.FCTITLE {
+    text-wrap: nowrap;
+    font-size: 20px;
+}
+

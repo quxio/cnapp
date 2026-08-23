@@ -13,6 +13,8 @@ function Navbar() {
     <div className="NAVBAR NAVBARSPACER">
       <img alt="banner" src={logobanner} className="LLLL"/>
       <button>search</button>
+      <button>idea</button>
+      <button>project</button>
 
       <div style={{flexGrow: 1}}></div>
       <Authenticated>
@@ -28,9 +30,9 @@ function Navbar() {
                 <div className="PROFILETEXT">Your Name extends more</div>
               </div>
               <div className="PROFILEGRID">
-                <div>+</div>
-                <div>Account</div>
-                <div>Preferences</div>
+                <Link to={"mkpost"}>+</Link>
+                <Link to={"account"}>Account</Link>
+                <Link to={"account"}>Preferences</Link>
                 <div onClick={auth.signOut}>Log out</div>
               </div>
             </div>
@@ -48,6 +50,22 @@ function Navbar() {
 function Navbarspacer() { return <div className="NAVBARSPACER"></div> }
 
 
+function Card() { return (
+  <div className="FEEDCARD">
+    <div className="FCIMAGEBOX">
+      <div className="FCIMAGE"></div>
+      <div className="FCTEMP"></div>
+      <div className="FCTEMP"></div>
+      <div className="FCTEMP"></div>
+    </div>
+    <div className="FCTEXTBOX">
+      <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
+      <div className="FCBADGES">a 9 1 5</div>
+      <div className="FCTOOLS">A X F P</div>
+    </div>
+  </div>
+)}
+
 export default function Feed() {
   return (
     <>
@@ -55,344 +73,7 @@ export default function Feed() {
       <Navbarspacer/>
       <div className="FEEDBOXOUTER">
         <div className="FEEDBOX">
-          <div className="FEEDCARD">
-            <div className="FCIMAGEBOX">
-              <div className="FCIMAGE"></div>
-              <div className="FCTEMP"></div>
-              <div className="FCTEMP"></div>
-              <div className="FCTEMP"></div>
-            </div>
-            <div className="FCTEXTBOX">
-              <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-              <div className="FCBADGES">a 9 1 5</div>
-              <div className="FCTOOLS">A X F P</div>
-            </div>
-          </div>
-          <div className="FEEDCARD">
-            <div className="FCIMAGEBOX">
-              <div className="FCIMAGE"></div>
-              <div className="FCTEMP"></div>
-              <div className="FCTEMP"></div>
-              <div className="FCTEMP"></div>
-            </div>
-            <div className="FCTEXTBOX">
-              <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-              <div className="FCBADGES">a 9 1 5</div>
-              <div className="FCTOOLS">A X F P</div>
-            </div>
-          </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div><div className="FEEDCARD">
-          <div className="FCIMAGEBOX">
-            <div className="FCIMAGE"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-            <div className="FCTEMP"></div>
-          </div>
-          <div className="FCTEXTBOX">
-            <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-            <div className="FCBADGES">a 9 1 5</div>
-            <div className="FCTOOLS">A X F P</div>
-          </div>
-        </div>
+          {new Array(120).fill(<Card />)}
         </div>
       </div>
     </>

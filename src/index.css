@@ -88,12 +88,12 @@ body {
     padding: 3px;
     gap: 3px;
 }
-.PROFILEGRID > div {
+.PROFILEGRID > * {
     border-radius: 14px;
     background-color: pink;
     display: flex; flex-wrap: nowrap; justify-content: center; align-items: center;
 }
-.PROFILEGRID > div:hover {
+.PROFILEGRID > *:hover {
     background-color: #dca4ae;
 }
 .LLLL {
@@ -187,7 +187,7 @@ body {
     height: 100%;
     width: 100%;
     max-width: 1650px;
-    margin: 12px;
+    /*margin: 12px;*/
     display: flex; flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
@@ -209,10 +209,13 @@ body {
     grid-template: repeat(4, 1fr) / repeat(3, 1fr);
     gap: 5px;
 }
+.FCIMAGEBOX * {
+    cursor: pointer;
+}
 .FCIMAGE {
     grid-column: 1 / -1;
     grid-row: 1 / -2;
-    background-color: lightcyan
+    background-color: lightcyan;
 }
 .FCTEMP {
     background-color: gray;

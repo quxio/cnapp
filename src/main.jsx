@@ -4,6 +4,8 @@ import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
+import { Link } from "react-router";
+
 import "./index.css";
 import Feed from "./Feed.jsx";
 import Login from "./Login.jsx";
@@ -19,6 +21,8 @@ createRoot(document.getElementById("REACTROOT")).render(
           children: [
             {path: "/", element: <Feed/>},
             {path: "login", element: <Login/>},
+            {path: "account", element: <div><Link to={"/"}>back</Link>View account details.</div>},
+            {path: "mkpost", element: <div><Link to={"/"}>back</Link>make new post</div>},
           ]
         }])
       }/>

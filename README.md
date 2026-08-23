@@ -1,7 +1,5 @@
 # Idea4Project
 
-A simple, community-oriented version of ideation/networking/project-building for high schoolers 
-
 ---
 
 *TODO*

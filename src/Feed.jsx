@@ -5,6 +5,27 @@ import { Link } from "react-router";
 import logobanner from "./logobanner01.png";
 import profiletemp from "./profiletemp01.png";
 
+import { useQuery } from "convex/react";
+import { api } from "../convex/_generated/api";
+
+import Markdown from "react-markdown";
+
+function SearchBar() {
+  return (
+    <div className="SEARCHBAR">
+      {/*<div>*/}
+        <input placeholder="Type"/>
+      {/*</div>*/}
+      {/*<div>*/}
+        <input placeholder="Tag"/>
+      {/*</div>*/}
+      {/* <div> */}
+        <input placeholder="Keyword"/>
+      {/*</div>*/}
+    </div>
+  )
+}
+
 function Navbar() {
   const auth = useAuthActions();
   let [EP, setEP] = useState(false);
@@ -12,9 +33,10 @@ function Navbar() {
   return (
     <div className="NAVBAR NAVBARSPACER">
       <img alt="banner" src={logobanner} className="LLLL"/>
-      <button>search</button>
-      <button>idea</button>
-      <button>project</button>
+      {/*<button>search</button>*/}
+      {/*<button>idea</button>*/}
+      {/*<button>project</button>*/}
+      <SearchBar/>
 
       <div style={{flexGrow: 1}}></div>
       <Authenticated>
@@ -32,7 +54,7 @@ function Navbar() {
               <div className="PROFILEGRID">
                 <Link to={"mkpost"}>+</Link>
                 <Link to={"account"}>Account</Link>
-                <Link to={"account"}>Preferences</Link>
+                <Link to={"account"}>Your Posts</Link>
                 <div onClick={auth.signOut}>Log out</div>
               </div>
             </div>
@@ -50,8 +72,9 @@ function Navbar() {
 function Navbarspacer() { return <div className="NAVBARSPACER"></div> }
 
 
-function Card() { return (
-  <div className="FEEDCARD">
+function Card({index, indexfunc, title, desc, author, upvotes, numwips, numfins}) {
+  return (
+  <div className="FEEDCARD" onClick={()=>indexfunc(index)}>
     <div className="FCIMAGEBOX">
       <div className="FCIMAGE"></div>
       <div className="FCTEMP"></div>
@@ -59,23 +82,51 @@ function Card() { return (
       <div className="FCTEMP"></div>
     </div>
     <div className="FCTEXTBOX">
-      <div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>
-      <div className="FCBADGES">a 9 1 5</div>
-      <div className="FCTOOLS">A X F P</div>
+      {/*<div className="FCTITLE">Lorem Ipsum Dolor sdfj sdf oisjdof sjdf sdifo </div>*/}
+      {/*<div className="">a 9 1 5</div>*/}
+      {/*<div className="FCTOOLS">A X F P</div>*/}
+      <div className="FCTITLE">{title}</div>
+      <div className="">by {author}</div>
+      <div className="">{desc}</div>
+      <div className="">upvotes: {upvotes}</div>
+      <div className="">wips: {numwips}, fins: {numfins}</div>
     </div>
   </div>
 )}
 
+function Cardmodal({ideas, index, indexfunc}) {
+  let data;
+  if (index !== null) { data = ideas[index]; }
+  return (<div className={index === null ? "CARDMODALSHARED CARDMODALHIDDEN" : "CARDMODALSHARED CARDMODAL"} onClick={() => indexfunc(null)}>
+    <div className="CMINNER" onClick={(e)=>e.stopPropagation()}>
+      { index === null ? <></> : <>
+        <h1>{data.title}</h1>
+        <h2>{data.desc}</h2>
+        <p>by {data.author}</p>
+        <p>body:</p>
+        <hr />
+        <Markdown>{data.longdesc}</Markdown>
+      </>}
+    </div>
+  </div>)
+}
+
 export default function Feed() {
+  const ideas = useQuery(api.clientfuncs.queryIdeas);
+  const [cardindex, setCardindex] = useState(null);
+
   return (
-    <>
+    <div>
       <Navbar/>
       <Navbarspacer/>
+
+      <Cardmodal ideas={ideas} index={cardindex} indexfunc={setCardindex}/>
+
       <div className="FEEDBOXOUTER">
         <div className="FEEDBOX">
-          {new Array(120).fill(<Card />)}
+          {ideas?.map((i, index)=> new Array(3).fill(<Card key={i._id} index={index} indexfunc={setCardindex} title={i.title} desc={i.desc} author={i.author} upvotes={i.upvotes} numwips={i.numwips} numfins={i.numfins} />) )}
         </div>
       </div>
-    </>
+    </div>
   )
 }

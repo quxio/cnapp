@@ -20,35 +20,35 @@ export default defineSchema({
   })
     .index("email", ["email"])
     .index("phone", ["phone"])
-    .index("withHandle", ["handle"]),
+    .index("withHandle", ["handle"])
+  ,
 
   ideas: defineTable({
     author: v.id("users"),
 
     upvotes: v.int64(),
-    accepted: v.int64(),
+
+    numwips: v.int64(),
+    numfins: v.int64(),
 
     title: v.string(),
     desc: v.string(),
+    longdesc: v.string(),
   })
-    .index("author", ["author"]),
+    .index("author", ["author"])
+  ,
 
   projects: defineTable({
     author: v.id("users"),
+
+    ogidea: v.id("ideas"),
+    compstatus: v.boolean(),
+
+    title: v.string(),
+    tc: v.string(),
   })
-    .index("author", ["author"]),
-
-  questions: defineTable({
-    author: v.id("users"),
-
-    idea: v.optional(v.id("ideas")),
-    project: v.optional(v.id("projects")),
-
-    qcontent: v.string(),
-    acontent: v.optional(v.string()),
-    public: v.boolean(),
-  })
-    .index("idea", ["idea"])
-    .index("project", ["project"]),
+    .index("author", ["author"])
+    .index("ogidea", ["ogidea"])
+  ,
 
 });

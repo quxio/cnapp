@@ -15,12 +15,12 @@ export default defineSchema({
     name: v.string(),
     avatar: v.string(),
     handle: v.string(),
-    bio: v.string(), // a little bit about themself, their values, their current skills
-    // contact: v.string() // and a little list of emails/phones/comms?
+    bio: v.string(),
+    // contact: v.string() // field for emails/phones/comms?
   })
     .index("email", ["email"])
     .index("phone", ["phone"])
-    .index("withHandle", ["handle"])
+    .index("handle", ["handle"])
   ,
 
   ideas: defineTable({
@@ -38,17 +38,33 @@ export default defineSchema({
     .index("author", ["author"])
   ,
 
+  tags: defineTable({
+    val: v.string(),
+  }),
+
+  projecttags: defineTable({
+    project: v.id("projects"),
+    tag: v.id("tags"),
+  })
+    .index("project", ["project"])
+    .index("tag", ["tag"])
+  ,
+
   projects: defineTable({
     author: v.id("users"),
-
-    ogidea: v.id("ideas"),
-    compstatus: v.boolean(),
+    ptr: v.nullable(v.id("projects")),
+    upvote_num: v.int64(),
+    fork_prev: v.int64(),
+    fork_total: v.int64(),
+    status: v.int64(),
 
     title: v.string(),
-    tc: v.string(),
+    desc: v.string(),
+    writeup: v.string(),
   })
     .index("author", ["author"])
-    .index("ogidea", ["ogidea"])
+    .index("ptr", ["ptr"])
+    .index("status", ["status"])
   ,
 
 });

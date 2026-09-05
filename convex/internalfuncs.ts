@@ -5,7 +5,7 @@ const HandleCollisionExists = internalQuery({
   args: { ph: v.string() },
   handler: async (ctx, {ph}) => {
     const data = await ctx.db.query("users")
-      .withIndex("withHandle", (v)=>v.eq("handle", ph)).collect();
+      .withIndex("handle", (v)=>v.eq("handle", ph)).collect();
     return data?.length > 0;
   }
 })

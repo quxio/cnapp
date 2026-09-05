@@ -2,6 +2,7 @@
     margin: 0; padding: 0;
     box-sizing: border-box;
 
+    user-select: none;
     -webkit-user-select: none;
     cursor: default;
     font: 16px/1.14 system-ui;
@@ -283,6 +284,8 @@ body {
     max-width: 1000px;
     height: auto;
 }
+.CMINNER * { user-select: text; -webkit-user-select: text }
+.CMINNER p { cursor: text; }
 .CMINNER h1 { font-size: 28px; }
 .CMINNER h2 { font-size: 20px; }
 .CMINNER code { font-family: monospace; background-color: lightgray; }

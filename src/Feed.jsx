@@ -13,15 +13,9 @@ import Markdown from "react-markdown";
 function SearchBar() {
   return (
     <div className="SEARCHBAR">
-      {/*<div>*/}
         <input placeholder="Type"/>
-      {/*</div>*/}
-      {/*<div>*/}
         <input placeholder="Tag"/>
-      {/*</div>*/}
-      {/* <div> */}
         <input placeholder="Keyword"/>
-      {/*</div>*/}
     </div>
   )
 }
@@ -72,7 +66,7 @@ function Navbar() {
 function Navbarspacer() { return <div className="NAVBARSPACER"></div> }
 
 
-function Card({index, indexfunc, title, desc, author, upvotes, numwips, numfins}) {
+function Card({index, indexfunc, title, desc, author, upvotes, fork_prev, fork_total}) {
   return (
   <div className="FEEDCARD" onClick={()=>indexfunc(index)}>
     <div className="FCIMAGEBOX">
@@ -89,15 +83,15 @@ function Card({index, indexfunc, title, desc, author, upvotes, numwips, numfins}
       <div className="">by {author}</div>
       <div className="">{desc}</div>
       <div className="">upvotes: {upvotes}</div>
-      <div className="">wips: {numwips}, fins: {numfins}</div>
+      <div className="">fork_prev: {fork_prev}, fork_total: {fork_total}</div>
     </div>
   </div>
 )}
 
-function Cardmodal({ideas, index, indexfunc}) {
+function Cardmodal({projects, index, indexfunc}) {
   let data;
-  if (index !== null) { data = ideas[index]; }
-  return (<div className={index === null ? "CARDMODALSHARED CARDMODALHIDDEN" : "CARDMODALSHARED CARDMODAL"} onClick={() => indexfunc(null)}>
+  if (index !== null) { data = projects[index]; }
+  return (<div className={index === null ? "CARDMODALSHARED CARDMODALHIDDEN" : "CARDMODALSHARED CARDMODAL"} onKeyDown={() => indexfunc(null)}  onClick={() => indexfunc(null)}>
     <div className="CMINNER" onClick={(e)=>e.stopPropagation()}>
       { index === null ? <></> : <>
         <h1>{data.title}</h1>
@@ -105,14 +99,14 @@ function Cardmodal({ideas, index, indexfunc}) {
         <p>by {data.author}</p>
         <p>body:</p>
         <hr />
-        <Markdown>{data.longdesc}</Markdown>
+        <Markdown>{data.writeup}</Markdown>
       </>}
     </div>
   </div>)
 }
 
 export default function Feed() {
-  const ideas = useQuery(api.clientfuncs.queryIdeas);
+  const projects = useQuery(api.clientfuncs.fetchProjects);
   const [cardindex, setCardindex] = useState(null);
 
   return (
@@ -120,11 +114,11 @@ export default function Feed() {
       <Navbar/>
       <Navbarspacer/>
 
-      <Cardmodal ideas={ideas} index={cardindex} indexfunc={setCardindex}/>
+      <Cardmodal projects={projects} index={cardindex} indexfunc={setCardindex}/>
 
       <div className="FEEDBOXOUTER">
         <div className="FEEDBOX">
-          {ideas?.map((i, index)=> new Array(3).fill(<Card key={i._id} index={index} indexfunc={setCardindex} title={i.title} desc={i.desc} author={i.author} upvotes={i.upvotes} numwips={i.numwips} numfins={i.numfins} />) )}
+          {projects?.map((i, index)=> <Card key={i._id} index={index} indexfunc={setCardindex} title={i.title} desc={i.desc} author={i.author} upvotes={i.upvotes} fork_prev={i.fork_prev} fork_total={i.fork_total} /> )}
         </div>
       </div>
     </div>

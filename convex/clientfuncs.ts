@@ -6,27 +6,33 @@ async function nameOfUser(ctx: QueryCtx, userId: Id<"users">) {
   const data = await ctx.db.get("users", userId);
   return data?.name ?? "";
 }
-const queryIdeas = query({
-  args: {},
-  handler: async (ctx) => {
-    const raw = await ctx.db.query("ideas").collect();
-    const final = [];
-    for (const obj of raw) {
-      const nobj = {...obj, author: await nameOfUser(ctx, obj.author)};
-      final.push(nobj);
-    }
-    return final;
+
+const fetchProjects = query({
+  args: {
+    // author: v.nullable(v.id("author")),
+    // tags: v.array(v.id(""))
   },
+  handler: async (ctx) => {
+    const rawData = await ctx.db.query("projects").collect();
+    const withAuthorNames = [];
+    for (const obj of rawData) {
+      const nobj = {...obj, author: await nameOfUser(ctx, obj.author)};
+      withAuthorNames.push(nobj);
+    }
+    return withAuthorNames;
+  }
 })
+
 // const mutateIdeas = mutation({
 //   args: {
 //     title: v.string(),
 //     desc: v.string(),
 //     longdesc: v.string(),
 //   }
+//
 // })
 
 
 
 
-export { queryIdeas };
+export { fetchProjects };
